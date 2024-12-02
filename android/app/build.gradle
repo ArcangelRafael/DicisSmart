@@ -1,0 +1,42 @@
+plugins {
+    id "com.android.application"  // Solo se aplica una vez
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"  // Este es el plugin de Flutter
+    id 'com.google.gms.google-services'  // Este es el plugin de Google Services para Firebase
+}
+
+android {
+    namespace = "com.example.dicismart_shop"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.dicismart_shop"
+        minSdkVersion 23
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."  // Asegúrate de que esta ruta sea correcta para tu proyecto Flutter
+}
+
+// Aplicar el plugin de Google Services al final
+apply plugin: 'com.google.gms.google-services'
